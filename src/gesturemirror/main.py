@@ -7,6 +7,7 @@ from gesturemirror.gesture_sensor import GestureSensor
 from gesturemirror.sonos_controller import SonosController
 
 I2C_PORT = 1
+DISPLAY_TIMEOUT = 60    # seconds after which the display will turn off
 
 # the rotation of the APDS9960 sensor (counter-clockwise, in degrees)
 ROTATION = 180
@@ -21,7 +22,7 @@ def main():
     sensor = GestureSensor(i2c, ROTATION)
     gesture_controller = GestureController(sensor)
 
-    display = DisplaySwitcher()
+    display = DisplaySwitcher(DISPLAY_TIMEOUT)
     sonos = SonosController(SONOS_IP)
 
     def play_radio():
