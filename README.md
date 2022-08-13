@@ -2,7 +2,8 @@
 Using an APDS9960 gesture sensor and a Raspberry Pi, this project can control an external display and a Sonos speaker.
 
 This project might be handy if you happen to have a Raspberry Pi [smart mirror](https://magicmirror.builders/) that
-is connected to an APDS9960 gesture sensor and nearby a Sonos speaker. It fits use cases like the following:
+is connected to an APDS9960 gesture sensor and also a Sonos speaker that you want to control.
+You can realize use cases like the following:
 
 > The display should turn on when you make a gesture and should automatically turn off when a timer expires.
 Another gesture should turn on the speaker and play from a predefined URI (e. g. a radio station).
