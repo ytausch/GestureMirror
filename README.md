@@ -25,5 +25,6 @@ Then, make sure to personalize `main.py` for your needs.
 
 Finally, start the application:
 ```bash
-python3 ./src/gesturemirror/main.py
+cd src
+python -m gesturemirror.main
 ```
