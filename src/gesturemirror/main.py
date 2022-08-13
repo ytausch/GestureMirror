@@ -1,6 +1,5 @@
-import time
-
 import smbus
+import time
 
 from gesturemirror.display_switcher import DisplaySwitcher
 from gesturemirror.gesture_controller import GestureController
