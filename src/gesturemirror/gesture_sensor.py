@@ -13,9 +13,12 @@ class GestureSensor:
     GESTURE_NEAR = APDS9960_DIR_NEAR
     GESTURE_FAR = APDS9960_DIR_FAR
 
+    ALL_GESTURES = [NO_GESTURE, GESTURE_UP, GESTURE_DOWN, GESTURE_LEFT, GESTURE_RIGHT, GESTURE_NEAR, GESTURE_FAR]
+
     def __init__(self, bus: smbus.SMBus, rotation: int = 0):
         """
         Initializes the gesture sensor.
+
         :param bus: The bus to use for the sensor.
         :param rotation: Rotation of the device, in degrees (counter-clockwise with sensor facing towards you).
         Only multiples of 90 degrees make sense here. Defaults to 0.
@@ -27,6 +30,7 @@ class GestureSensor:
     def gesture(self):
         """
         Reads the gesture from the sensor and applies the rotation.
+
         :return: The gesture.
         """
         gesture = self.device.readGesture()
