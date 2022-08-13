@@ -1,10 +1,19 @@
 import subprocess
+import time
+from typing import Optional
 
 
 class DisplaySwitcher:
-    def __init__(self):
+    def __init__(self, timeout: Optional[float] = None):
+        """
+        Initializes the display switcher.
+        :param timeout: The timeout in seconds after which the display is turned off,
+        or None if no timeout should be set.
+        """
         self._powered = True
+        self._turned_on: float = 0
         self.turn_on()
+        self.timeout = timeout
 
     @property
     def powered(self):
@@ -19,3 +28,11 @@ class DisplaySwitcher:
         print("Turning on display")
         subprocess.run(['vcgencmd', 'display_power', '1'])
         self._powered = True
+        self._turned_on = time.time()
+
+    def timeout_update(self):
+        """
+        Call this method regularly to turn off the display after the timeout has elapsed.
+        """
+        if self._powered and self.timeout is not None and time.time() - self._turned_on > self.timeout:
+            self.turn_off()
